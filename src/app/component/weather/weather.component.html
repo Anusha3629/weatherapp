@@ -1,0 +1,68 @@
+<div class="row card-content">
+    <div class="search">
+        <form (submit)="getWeather()">
+            <input type="text" [(ngModel)]="city" name="city" placeholder="Enter city name" required>
+            <button type="submit"><img src = "../assets/search.png"></button>
+          </form>
+    </div>
+    <div class="weatherData row">
+        <div class="cloud-img"><img src="../assets/mist.png"></div>
+        <p id="summary">Weather: {{ weatherData?.weather[0]?.description }}</p>
+        <div class="row card-data">
+            <div class="col-md-4 info-block">
+                <div class="info-block-label">
+                  <p>City: </p>
+                </div>
+                <div class="info-block-value">
+                    {{ weatherData?.name }}, {{ weatherData?.sys?.country }}
+                </div>
+            </div>
+            <div class="col-md-4 info-block">
+                <div class="info-block-label">
+                  <p>Temparature: </p>
+                </div>
+                <div *ngIf="weatherData?.main?.temp" class="info-block-value">
+                    {{ weatherData?.main?.temp}} °C
+                </div>
+            </div>
+            <div class="col-md-4 info-block">
+                <div class="info-block-label">
+                  <p>Humidity: </p>
+                </div>
+                <div *ngIf ="weatherData?.main?.humidity" class="info-block-value">
+                    {{ weatherData?.main?.humidity }} %
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 info-block">
+                <div class="info-block-label">
+                  <p>Wind: </p>
+                </div>
+                <div *ngIf="weatherData?.wind?.speed" class="info-block-value">
+                    {{ weatherData?.wind?.speed }} m/sec
+                </div>
+            </div>
+            <div class="col-md-4 info-block">
+                <div class="info-block-label">
+                  <p>Min-temp: </p>
+                </div>
+                <div *ngIf="weatherData?.main?.temp_min" class="info-block-value">
+                     {{ weatherData?.main?.temp_min}} °C
+                </div>
+            </div>
+            <div class="col-md-4 info-block">
+                <div class="info-block-label">
+                  <p>Max-temp: </p>
+                </div>
+                <div *ngIf="weatherData?.main?.temp_max" class="info-block-value">
+                    {{ weatherData?.main?.temp_max}} °C
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+
